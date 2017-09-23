@@ -12,9 +12,10 @@ namespace laba1
 {
     public partial class Form1 : Form
     {
-        // private RedVine[] redVine;
-        // private Sugar[] sugar;
-        // private Pan pan;
+         private RedVine[] redVines;
+         private Sugar sugar;
+         private Pan pan;
+         private Fire fire;
 
         public Form1()
         {
@@ -24,7 +25,9 @@ namespace laba1
         private void Form1_Load(object sender, EventArgs e)
         {
             //здесь инициализируем классы
-            //pan = new Pan();
+            pan = new Pan();
+            fire = new Fire();
+
 
         }
 
@@ -68,9 +71,11 @@ namespace laba1
 
         }
 
-        private void RedVine_ValueChanged(object sender, EventArgs e)
+        private void RedVineCount_ValueChanged(object sender, EventArgs e)
         {
-
+            if (RedVineCount.Value > 0) {
+                SetVine.Enabled = true;
+            }
         }
 
         private void Sugar_ValueChanged(object sender, EventArgs e)
@@ -153,6 +158,35 @@ namespace laba1
 
         private void Cpecii_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void SetVine_Click(object sender, EventArgs e)
+        {
+            if (RedVineCount.Value < 7)
+            {
+                MessageBox.Show("Минимальное количество вина: 700мл! Добавьте вина!", "Ошибка логики", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else {
+                pan.Init(Convert.ToInt32(RedVineCount.Value));
+                SetSugar.Enabled = true;
+            }
+        }
+
+        private void SetSugar_Click(object sender, EventArgs e)
+        {
+            sugar = new Sugar();
+            sugar.Count = Convert.ToInt32(SugarCount.Value);
+            if (sugar.Count > 0)
+            {
+                pan.AddSugar(sugar);
+                MessageBox.Show("Сахар добавили", "Кухня", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Сахара же нет, что добавлять?", "Ошибка логики", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
