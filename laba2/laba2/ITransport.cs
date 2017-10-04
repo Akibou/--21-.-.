@@ -1,4 +1,5 @@
-﻿using System;
+﻿//2
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 public interface ITransport
 {
-    void moveLiner(Graphics g);
+    void moveShip(Graphics g);
 
-    void drawLiner(Graphics g);
+    void drawShip(Graphics g);
 
     void setPosition(int x, int y);
 
