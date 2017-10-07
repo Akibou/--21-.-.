@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 namespace laba2
 {
     public class CruiseLiner : Ship
-    //добавить отличия, кот нет у судна
+    //добавить отличия, кот нет у судна (рестораны, бассейны)
     {
         private bool BorderLine;
         private bool TopLine;
         private bool RoundLine;
         private Color dopColor;
+        private bool Rest;
 
         public CruiseLiner(int maxSpeed,
                            int maxCountPassenget,
@@ -22,7 +23,7 @@ namespace laba2
                            bool BorderLine,
                            bool TopLine,
                            bool RoundLine,
-                           Color dopColor) : base(maxSpeed, maxCountPassenget, weight, color)
+                           Color dopColor, bool Rest) : base(maxSpeed, maxCountPassenget, weight, color)
 
         {
 
@@ -30,6 +31,7 @@ namespace laba2
             this.TopLine = TopLine;
             this.RoundLine = RoundLine;
             this.dopColor = dopColor;
+
 
         }
 

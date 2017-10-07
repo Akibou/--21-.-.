@@ -47,6 +47,8 @@
             this.buttonSelectColor = new System.Windows.Forms.Button();
             this.buttonDopColor = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.Rest = new System.Windows.Forms.CheckBox();
+            this.Bass = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.LinerPic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,11 +234,35 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
+            // Rest
+            // 
+            this.Rest.AutoSize = true;
+            this.Rest.Location = new System.Drawing.Point(322, 351);
+            this.Rest.Name = "Rest";
+            this.Rest.Size = new System.Drawing.Size(82, 17);
+            this.Rest.TabIndex = 25;
+            this.Rest.Text = "Рестораны";
+            this.Rest.UseVisualStyleBackColor = true;
+            this.Rest.CheckedChanged += new System.EventHandler(this.Rest_CheckedChanged);
+            // 
+            // Bass
+            // 
+            this.Bass.AutoSize = true;
+            this.Bass.Location = new System.Drawing.Point(224, 352);
+            this.Bass.Name = "Bass";
+            this.Bass.Size = new System.Drawing.Size(77, 17);
+            this.Bass.TabIndex = 26;
+            this.Bass.Text = "Бассейны";
+            this.Bass.UseVisualStyleBackColor = true;
+            this.Bass.CheckedChanged += new System.EventHandler(this.Bass_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 372);
+            this.Controls.Add(this.Bass);
+            this.Controls.Add(this.Rest);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonDopColor);
             this.Controls.Add(this.buttonSelectColor);
@@ -285,6 +311,8 @@
         private System.Windows.Forms.Button buttonSelectColor;
         private System.Windows.Forms.Button buttonDopColor;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox Rest;
+        private System.Windows.Forms.CheckBox Bass;
     }
 }
 

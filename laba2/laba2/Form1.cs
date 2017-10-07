@@ -106,7 +106,7 @@ namespace laba2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            inter = new CruiseLiner(150, 4, 1000, color, BorderLine.Checked, TopLine.Checked, RoundLine.Checked, dopColor);
+            inter = new CruiseLiner(150, 4, 1000, color, BorderLine.Checked, TopLine.Checked, RoundLine.Checked, dopColor, Rest.Checked);
             Bitmap bmp = new Bitmap(LinerPic.Width, LinerPic.Height);
             Graphics gr = Graphics.FromImage(bmp);
             inter.drawShip(gr);
@@ -166,6 +166,26 @@ namespace laba2
                 LinerPic.Image = bmp;
             }
 
+        }
+
+        private void Rest_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rest.Checked)
+            {
+                button3.Enabled = false;
+            }
+            else button3.Enabled = true;
+                
+        }
+
+        private void Bass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Bass.Checked)
+            {
+                button3.Enabled = false;
+            }
+            else button3.Enabled = true;
+            
         }
     }
 }
