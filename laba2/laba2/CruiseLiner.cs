@@ -23,7 +23,9 @@ namespace laba2
                            bool BorderLine,
                            bool TopLine,
                            bool RoundLine,
-                           Color dopColor, bool Rest) : base(maxSpeed, maxCountPassenget, weight, color)
+                           Color dopColor, 
+                           bool Rest,
+                           bool Bass) : base(maxSpeed, maxCountPassenget, weight, color)
 
         {
 
