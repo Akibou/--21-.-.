@@ -7,9 +7,72 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    public class CruiseLiner : Ship
+    public class CruiseLiner : Ship, IComparable<CruiseLiner>, IEquatable<Ship>
    
     {
+        public int CompareTo(CruiseLiner other)
+        {
+            /*
+            var res = (this is Ship).CompareTo(other is Ship);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (BorderLine != other.BorderLine)
+            {
+                return BorderLine.CompareTo(other.BorderLine);
+            }
+            if (TopLine != other.TopLine)
+            {
+                return TopLine.CompareTo(other.TopLine);
+            }
+            if (RoundLine != other.RoundLine)
+            {
+                return RoundLine.CompareTo(other.RoundLine);
+            }
+            if (dopColor != other.dopColor)
+            {
+                dopColor.Name.CompareTo(other.dopColor.Name);
+            }
+            */
+            // return 0;
+            return other.dopColor.Name.CompareTo(dopColor.Name);
+        }
+        public bool Equals (CruiseLiner other)
+        {
+            var res = (this is Ship).Equals(other is Ship);
+            if (!res) { return res; }
+            if (BorderLine != other.BorderLine)
+            {
+                return false;
+            }
+            if (TopLine != other.TopLine)
+            {
+                return false;
+            }
+            if (RoundLine != other.RoundLine)
+            {
+                return false;
+            }
+            if (dopColor != other.dopColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) { return false; }
+            CruiseLiner shipObj = obj as CruiseLiner;
+            if (shipObj == null) { return false; }
+            else { return Equals(shipObj); }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         private bool BorderLine;
         private bool TopLine;
         private bool RoundLine;

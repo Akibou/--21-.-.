@@ -169,5 +169,12 @@ namespace laba2
                 Draw();
             }
         }
+
+        private void SortButton_Click(object sender, EventArgs e)
+        {
+            string[] test = prichal.SortMe();
+            for(int i=0; i<test.Length; i++) textBox1.AppendText(test[i]);
+            Draw();
+        }
     }
 }
