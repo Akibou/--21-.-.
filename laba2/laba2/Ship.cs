@@ -124,6 +124,23 @@ namespace laba2
 
             startPosY = rand.Next(10, 200);
         }
+        public Ship(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                MaxCountPassengers = Convert.ToInt32(strs[1]);
+                Weight = Convert.ToInt32(strs[2]);
+                ColorBody = Color.FromName(strs[3]);
+            }
+            this.countPassengers = 0;
+            Random rand = new Random();
+            startPosX = rand.Next(10, 200);
+            startPosY = rand.Next(10, 200);
+        }
+      
+
         public override void moveShip(Graphics g)
         {
 
@@ -176,6 +193,11 @@ namespace laba2
            // g.FillEllipse(brRed, startPosX, startPosY + 30, 20, 20);
             
         }
-}
-
+        public override string GetInfo()
+    {
+        return MaxSpeed + ";" + MaxCountPassengers + ";" + Weight + ";" + ColorBody.Name;
     }
+}
+    
+
+}

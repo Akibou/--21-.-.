@@ -20,5 +20,7 @@ namespace laba2
         int getPassenger();
 
         void SetMainColor(Color color);
+
+        string GetInfo();
     }
 }
