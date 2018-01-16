@@ -70,6 +70,15 @@ namespace laba2
             return count;
 
         }
-        
+
+        public virtual void SetMainColor(Color color)
+        {
+            ColorBody = color;
+        }
+        public virtual void setDopColor(Color dopColor)
+        {
+            ColorBody = dopColor;
+        }
+
     }
 }

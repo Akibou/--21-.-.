@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace laba2
 {
     public class CruiseLiner : Ship
-    //добавить отличия, кот нет у судна (рестораны, бассейны)
+   
     {
         private bool BorderLine;
         private bool TopLine;
@@ -28,7 +28,6 @@ namespace laba2
                            bool Bass) : base(maxSpeed, maxCountPassenget, weight, color)
 
         {
-
             this.BorderLine = BorderLine;
             this.TopLine = TopLine;
             this.RoundLine = RoundLine;
@@ -77,8 +76,10 @@ namespace laba2
                 g.DrawEllipse(pen, startPosX + 20, startPosY + 70, 15, -15);
             }
 
-
-
+        }
+        public void setDopColor(Color color)
+        {
+            dopColor = color;
         }
 
     }
