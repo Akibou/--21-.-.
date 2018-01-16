@@ -46,7 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassArray.cs" />
     <Compile Include="CruiseLiner.cs" />
+    <Compile Include="FormPrichal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrichal.Designer.cs">
+      <DependentUpon>FormPrichal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prichal.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -60,6 +68,9 @@
     <Compile Include="WaterTrans.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrichal.resx">
+      <DependentUpon>FormPrichal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
