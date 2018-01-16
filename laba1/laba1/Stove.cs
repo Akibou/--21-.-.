@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-class Fire
+class Stove
 {
     private Pan pan;
     public bool State

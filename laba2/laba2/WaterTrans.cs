@@ -40,6 +40,8 @@ namespace laba2
             protected set; get;
         }
 
+       
+
         public abstract void moveShip(Graphics g);
         
         public abstract void drawShip(Graphics g);
@@ -70,6 +72,19 @@ namespace laba2
             return count;
 
         }
-        
+
+        public virtual void SetMainColor(Color color)
+        {
+            ColorBody = color;
+        }
+        public virtual void setDopColor(Color dopColor)
+        {
+            ColorBody = dopColor;
+        }
+        public virtual string GetInfo()
+        {
+            return MaxSpeed + ";" + MaxCountPassengers + ";" + Weight + ";" + ColorBody.Name;
+        }
+
     }
 }

@@ -30,13 +30,11 @@
         {
             this.RedVineCount = new System.Windows.Forms.NumericUpDown();
             this.SugarCount = new System.Windows.Forms.NumericUpDown();
-            this.Cinnamon = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.Ingr = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.LemonsCount = new System.Windows.Forms.NumericUpDown();
             this.Spec = new System.Windows.Forms.GroupBox();
             this.Cpecii = new System.Windows.Forms.CheckedListBox();
             this.Fire = new System.Windows.Forms.GroupBox();
@@ -48,15 +46,15 @@
             this.SliceLemon = new System.Windows.Forms.Button();
             this.GetCedra = new System.Windows.Forms.Button();
             this.Pan = new System.Windows.Forms.GroupBox();
+            this.AddLemons = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.SetSugar = new System.Windows.Forms.Button();
             this.SetSpec = new System.Windows.Forms.Button();
             this.SetVine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RedVineCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SugarCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cinnamon)).BeginInit();
             this.Ingr.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LemonsCount)).BeginInit();
             this.Spec.SuspendLayout();
             this.Fire.SuspendLayout();
             this.Knife.SuspendLayout();
@@ -79,14 +77,6 @@
             this.SugarCount.TabIndex = 1;
             this.SugarCount.ValueChanged += new System.EventHandler(this.Sugar_ValueChanged);
             // 
-            // Cinnamon
-            // 
-            this.Cinnamon.Location = new System.Drawing.Point(9, 77);
-            this.Cinnamon.Name = "Cinnamon";
-            this.Cinnamon.Size = new System.Drawing.Size(41, 20);
-            this.Cinnamon.TabIndex = 2;
-            this.Cinnamon.ValueChanged += new System.EventHandler(this.Cinnamon_ValueChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -106,24 +96,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Сахар (в ч.л.)";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Корица (в ч.л.)";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // Ingr
             // 
             this.Ingr.Controls.Add(this.label4);
-            this.Ingr.Controls.Add(this.numericUpDown1);
-            this.Ingr.Controls.Add(this.label3);
+            this.Ingr.Controls.Add(this.LemonsCount);
             this.Ingr.Controls.Add(this.label2);
             this.Ingr.Controls.Add(this.label1);
-            this.Ingr.Controls.Add(this.Cinnamon);
             this.Ingr.Controls.Add(this.SugarCount);
             this.Ingr.Controls.Add(this.RedVineCount);
             this.Ingr.Location = new System.Drawing.Point(10, 10);
@@ -137,18 +115,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 110);
+            this.label4.Location = new System.Drawing.Point(56, 84);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Лимон (шт)";
             // 
-            // numericUpDown1
+            // LemonsCount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(9, 103);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown1.TabIndex = 6;
+            this.LemonsCount.Location = new System.Drawing.Point(9, 77);
+            this.LemonsCount.Name = "LemonsCount";
+            this.LemonsCount.Size = new System.Drawing.Size(41, 20);
+            this.LemonsCount.TabIndex = 6;
+            this.LemonsCount.ValueChanged += new System.EventHandler(this.LemonsCount_ValueChanged);
             // 
             // Spec
             // 
@@ -173,8 +152,7 @@
             "Зерна кардамона",
             "Гвоздика",
             "Душистый перец",
-            "Мускатный орех",
-            "Лимон"});
+            "Мускатный орех"});
             this.Cpecii.Location = new System.Drawing.Point(6, 25);
             this.Cpecii.Name = "Cpecii";
             this.Cpecii.Size = new System.Drawing.Size(198, 165);
@@ -260,10 +238,10 @@
             this.SliceLemon.TabIndex = 1;
             this.SliceLemon.Text = "Порезать мякоть лимона кружочками";
             this.SliceLemon.UseVisualStyleBackColor = true;
+            this.SliceLemon.Click += new System.EventHandler(this.SliceLemon_Click);
             // 
             // GetCedra
             // 
-            this.GetCedra.Enabled = false;
             this.GetCedra.Location = new System.Drawing.Point(31, 31);
             this.GetCedra.Name = "GetCedra";
             this.GetCedra.Size = new System.Drawing.Size(121, 50);
@@ -274,22 +252,34 @@
             // 
             // Pan
             // 
+            this.Pan.Controls.Add(this.AddLemons);
             this.Pan.Controls.Add(this.button9);
             this.Pan.Controls.Add(this.SetSugar);
             this.Pan.Controls.Add(this.SetSpec);
             this.Pan.Controls.Add(this.SetVine);
             this.Pan.Location = new System.Drawing.Point(12, 179);
             this.Pan.Name = "Pan";
-            this.Pan.Size = new System.Drawing.Size(161, 191);
+            this.Pan.Size = new System.Drawing.Size(161, 221);
             this.Pan.TabIndex = 10;
             this.Pan.TabStop = false;
             this.Pan.Text = "Кастрюля";
             this.Pan.Enter += new System.EventHandler(this.Pan_Enter);
             // 
+            // AddLemons
+            // 
+            this.AddLemons.Enabled = false;
+            this.AddLemons.Location = new System.Drawing.Point(10, 102);
+            this.AddLemons.Name = "AddLemons";
+            this.AddLemons.Size = new System.Drawing.Size(134, 35);
+            this.AddLemons.TabIndex = 12;
+            this.AddLemons.Text = "Добавить лимоны";
+            this.AddLemons.UseVisualStyleBackColor = true;
+            this.AddLemons.Click += new System.EventHandler(this.AddLemons_Click);
+            // 
             // button9
             // 
             this.button9.Enabled = false;
-            this.button9.Location = new System.Drawing.Point(10, 140);
+            this.button9.Location = new System.Drawing.Point(10, 181);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(134, 30);
             this.button9.TabIndex = 11;
@@ -311,12 +301,13 @@
             // SetSpec
             // 
             this.SetSpec.Enabled = false;
-            this.SetSpec.Location = new System.Drawing.Point(10, 102);
+            this.SetSpec.Location = new System.Drawing.Point(10, 143);
             this.SetSpec.Name = "SetSpec";
             this.SetSpec.Size = new System.Drawing.Size(134, 32);
             this.SetSpec.TabIndex = 1;
             this.SetSpec.Text = "Добавить специи";
             this.SetSpec.UseVisualStyleBackColor = true;
+            this.SetSpec.Click += new System.EventHandler(this.SetSpec_Click);
             // 
             // SetVine
             // 
@@ -333,7 +324,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 371);
+            this.ClientSize = new System.Drawing.Size(816, 477);
             this.Controls.Add(this.Pan);
             this.Controls.Add(this.Knife);
             this.Controls.Add(this.Fire);
@@ -345,10 +336,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RedVineCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SugarCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cinnamon)).EndInit();
             this.Ingr.ResumeLayout(false);
             this.Ingr.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LemonsCount)).EndInit();
             this.Spec.ResumeLayout(false);
             this.Fire.ResumeLayout(false);
             this.Fire.PerformLayout();
@@ -362,10 +352,8 @@
 
         private System.Windows.Forms.NumericUpDown RedVineCount;
         private System.Windows.Forms.NumericUpDown SugarCount;
-        private System.Windows.Forms.NumericUpDown Cinnamon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox Ingr;
         private System.Windows.Forms.GroupBox Spec;
         private System.Windows.Forms.GroupBox Fire;
@@ -383,7 +371,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.CheckedListBox Cpecii;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown LemonsCount;
+        private System.Windows.Forms.Button AddLemons;
     }
 }
 

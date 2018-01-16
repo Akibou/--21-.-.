@@ -8,8 +8,55 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    public class Ship : WaterTrans//переделать на шип
+    public class Ship : WaterTrans, IComparable<Ship>, IEquatable<Ship>
     {
+        public int CompareTo (Ship other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed!=other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (MaxCountPassengers != other.MaxCountPassengers)
+            {
+                return MaxCountPassengers.CompareTo(other.MaxCountPassengers);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (ColorBody != other.ColorBody)
+            {
+                return ColorBody.Name.CompareTo(other.ColorBody.Name);
+            }
+            return 0;
+
+        }
+
+        public bool Equals (Ship other)
+        {
+            if (other == null) { return false; }
+            if (MaxCountPassengers != other.MaxCountPassengers) {  return false;  }
+            if (MaxSpeed!=other.MaxSpeed) { return false; }
+            if (Weight!=other.Weight) { return false; }
+            if (ColorBody!=other.ColorBody) { return false; }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj==null) { return false; }
+            Ship shipObj = obj as Ship;
+            if (shipObj==null) { return false; }
+            else { return Equals(shipObj); }
+        }
+
+        public override int GetHashCode()
+        {
+            return MaxSpeed.GetHashCode();
+        }
         public override int MaxSpeed
         {
             get
@@ -124,6 +171,23 @@ namespace laba2
 
             startPosY = rand.Next(10, 200);
         }
+        public Ship(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                MaxCountPassengers = Convert.ToInt32(strs[1]);
+                Weight = Convert.ToInt32(strs[2]);
+                ColorBody = Color.FromName(strs[3]);
+            }
+            this.countPassengers = 0;
+            Random rand = new Random();
+            startPosX = rand.Next(10, 200);
+            startPosY = rand.Next(10, 200);
+        }
+      
+
         public override void moveShip(Graphics g)
         {
 
@@ -176,6 +240,11 @@ namespace laba2
            // g.FillEllipse(brRed, startPosX, startPosY + 30, 20, 20);
             
         }
-}
-
+        public override string GetInfo()
+    {
+        return MaxSpeed + ";" + MaxCountPassengers + ";" + Weight + ";" + ColorBody.Name;
     }
+}
+    
+
+}
