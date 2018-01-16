@@ -15,13 +15,13 @@ namespace laba2
         {
             defaultValue = defVal;
             places = new Dictionary<int, T>();
-            maxCount = size;
+            maxCount = 20;
         }
         public static int operator +(ClassArray<T> p, T ship)
         {
             if (p.places.Count == p.maxCount)
             {
-                return -1;
+                throw new PrichalOverflowException();
             }
             for (int i = 0; i < p.places.Count; i++)
             {
@@ -47,7 +47,7 @@ namespace laba2
 
             }
 
-            return p.defaultValue;
+            throw new PrichalIndexOutOfRangeException();
         }
         private bool CheckFreePlace(int index)
         {
