@@ -163,8 +163,7 @@ namespace laba1
         {
             pan.GetVine();
             MessageBox.Show("Мы сделали это! Приятного аппетита!", "Кухня", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //buttonGetPotatos.Enabled = true;
-            //MessageBox.Show("Воду слили", "Кухня", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
 
         }
 
