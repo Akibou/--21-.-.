@@ -99,130 +99,151 @@ namespace laba2
         }
         public bool SaveData(string filename)
         {
-
-            if (File.Exists(filename))
+            try
             {
-
-                File.Delete(filename);
-
-            }
-
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
-            {
-
-                using (BufferedStream bs = new BufferedStream(fs))
+                if (File.Exists(filename))
                 {
 
-                    byte[] info = new UTF8Encoding(true).GetBytes("CountLeveles:" + prichalStages.Count + Environment.NewLine);
-                    fs.Write(info, 0, info.Length);
+                    File.Delete(filename);
 
-                    foreach (var level in prichalStages)
+                }
+
+                using (FileStream fs = new FileStream(filename, FileMode.Create))
+                {
+
+                    using (BufferedStream bs = new BufferedStream(fs))
                     {
 
-                        info = new UTF8Encoding(true).GetBytes("Level" + Environment.NewLine);
+                        byte[] info = new UTF8Encoding(true).GetBytes("CountLeveles:" + prichalStages.Count + Environment.NewLine);
                         fs.Write(info, 0, info.Length);
-                        for (int i = 0; i < countPlaces; i++)
+
+                        foreach (var level in prichalStages)
                         {
 
-                            var ship = level[i];
-                            if (ship != null)
+                            info = new UTF8Encoding(true).GetBytes("Level" + Environment.NewLine);
+                            fs.Write(info, 0, info.Length);
+                            for (int i = 0; i < countPlaces; i++)
                             {
 
-                                if (ship.GetType().Name == "Ship")
+                                var ship = level[i];
+                                if (ship != null)
                                 {
 
-                                    info = new UTF8Encoding(true).GetBytes("Ship:");
+                                    if (ship.GetType().Name == "Ship")
+                                    {
+
+                                        info = new UTF8Encoding(true).GetBytes("Ship:");
+                                        fs.Write(info, 0, info.Length);
+
+                                    }
+                                    if (ship.GetType().Name == "CruiseLiner")
+                                    {
+
+                                        info = new UTF8Encoding(true).GetBytes("CruiseLiner:");
+                                        fs.Write(info, 0, info.Length);
+
+                                    }
+
+                                    info = new UTF8Encoding(true).GetBytes(ship.GetInfo() + Environment.NewLine);
                                     fs.Write(info, 0, info.Length);
-
                                 }
-                                if (ship.GetType().Name == "CruiseLiner")
-                                {
-
-                                    info = new UTF8Encoding(true).GetBytes("CruiseLiner:");
-                                    fs.Write(info, 0, info.Length);
-
-                                }
-
-                                info = new UTF8Encoding(true).GetBytes(ship.GetInfo() + Environment.NewLine);
-                                fs.Write(info, 0, info.Length);
                             }
                         }
                     }
                 }
             }
-
+            catch (Exception e) {
+                throw e;
+            }
             return true;
 
         }
         public bool LoadData(string filename)
         {
-            if (!File.Exists(filename))
-            {MessageBox.Show("Файл не существует!", "",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-                
-            }
-            
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
-            {
-                string s = "";
-                using (BufferedStream bs = new BufferedStream(fs))
+            try {
+                using (FileStream fs = new FileStream(filename, FileMode.Open))
                 {
-                    byte[] b = new byte[fs.Length];
-                    UTF8Encoding temp = new UTF8Encoding(true);
-                    while (bs.Read(b, 0, b.Length) > 0)
+                    string s = "";
+                    using (BufferedStream bs = new BufferedStream(fs))
                     {
-                        s += temp.GetString(b);
-                    }
-                    
-                }
-                s = s.Replace("\r", "");
-                var strs = s.Split('\n');
-                if (strs[0].Contains("CountLeveles:"))
-                {//считываем количество уровней
-                    int count = Convert.ToInt32(strs[0].Split(':')[1]);
-                    if (prichalStages != null)
-                    { 
-                        prichalStages.Clear();
-                       
-                    }
-                    
-                    prichalStages = new List<ClassArray<ITransport>>(count);
-                   
-                }
-                else
-                {//если нет такой записи, то это не те данные
-                    MessageBox.Show("Не те данные", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                    
-                }
-                int counter = -1;
-                for (int i = 1; i < strs.Length; ++i)
-                {
-                    if (strs[i] == "Level")
-                    {
-                        counter++;
-                        prichalStages.Add(new ClassArray<ITransport>(countPlaces, null));
-                       
-                    }
-                    else if (strs[i].Split(':')[0] == "Ship")
-                    {
-                        ITransport ship = new Ship(strs[i].Split(':')[1]);
-                        int number = prichalStages[counter] + ship;
-                        if (number == -1) {  MessageBox.Show("Корабль -1", "", MessageBoxButtons.OK, MessageBoxIcon.Information);return false; }
-                        
-                    }
-                    else if (strs[i].Split(':')[0] == "CruiseLiner")
-                    {
-                        ITransport ship = new CruiseLiner(strs[i].Split(':')[1]);
-                        int number = prichalStages[counter] + ship;
-                        if (number == -1) { MessageBox.Show("Лайнер -1", "", MessageBoxButtons.OK, MessageBoxIcon.Information); return false; }
-                        
-                    }
-                }
+                        byte[] b = new byte[fs.Length];
+                        UTF8Encoding temp = new UTF8Encoding(true);
+                        while (bs.Read(b, 0, b.Length) > 0)
+                        {
+                            s += temp.GetString(b);
+                        }
 
+                    }
+                    s = s.Replace("\r", "");
+                    var strs = s.Split('\n');
+                    try {
+                        strs[0].Contains("CountLeveles:");
+                        //считываем количество уровней
+                        int count = Convert.ToInt32(strs[0].Split(':')[1]);
+                        if (prichalStages != null)
+                        {
+                            prichalStages.Clear();
+
+                        }
+
+                        prichalStages = new List<ClassArray<ITransport>>(count);
+                    }
+                    catch(Exception) {
+                        //если нет такой записи, то это не те данные
+                        throw new DataErrorException();
+                    }
+                    int counter = -1;
+                    for (int i = 1; i < strs.Length; ++i)
+                    {
+                        if (strs[i] == "Level")
+                        {
+                            counter++;
+                            prichalStages.Add(new ClassArray<ITransport>(countPlaces, null));
+
+                        }
+                        else if (strs[i].Split(':')[0] == "Ship")
+                        {
+                            ITransport ship = new Ship(strs[i].Split(':')[1]);
+                            int number = prichalStages[counter] + ship;
+                            if (number == -1) { MessageBox.Show("Корабль -1", "", MessageBoxButtons.OK, MessageBoxIcon.Information); return false; }
+
+                        }
+                        else if (strs[i].Split(':')[0] == "CruiseLiner")
+                        {
+                            ITransport ship = new CruiseLiner(strs[i].Split(':')[1]);
+                            int number = prichalStages[counter] + ship;
+                            if (number == -1) { MessageBox.Show("Лайнер -1", "", MessageBoxButtons.OK, MessageBoxIcon.Information); return false; }
+
+                        }
+                    }
+
+                }
             }
-            return true;
-            
-        }
+            catch (FileNotFoundException ex)
+            {
+                throw new FileNotFoundException(ex.Message + "Файл не существует");
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                throw new DirectoryNotFoundException(ex.Message + "Директории не существует");
+            }
+            catch (DriveNotFoundException ex)
+            {
+                throw new DriveNotFoundException(ex.Message + "Попытка доступа к недоступному диску или данным совместного использования");
+            }
+            catch (EndOfStreamException ex)
+            {
+                throw new EndOfStreamException(ex.Message + "Попытка чтения за концом потока.");
+            }
+            catch (InternalBufferOverflowException ex)
+            {
+                throw new InternalBufferOverflowException(ex.Message + "Буфер переполнен!");
+            }
+            catch (InvalidDataException ex)
+            {
+                throw new InvalidDataException(ex.Message + "Недопустимый формат данных");
+            }
+            return false;
+            }}
     }
-}
+   

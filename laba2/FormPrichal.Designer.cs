@@ -42,9 +42,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrichal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
@@ -53,9 +53,9 @@
             // 
             // SetShip
             // 
-            this.SetShip.Location = new System.Drawing.Point(583, 187);
+            this.SetShip.Location = new System.Drawing.Point(773, 196);
             this.SetShip.Name = "SetShip";
-            this.SetShip.Size = new System.Drawing.Size(128, 33);
+            this.SetShip.Size = new System.Drawing.Size(123, 33);
             this.SetShip.TabIndex = 2;
             this.SetShip.Text = "Оставить корабль";
             this.SetShip.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             this.groupBox1.Controls.Add(this.maskedTextBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TakeShip);
-            this.groupBox1.Location = new System.Drawing.Point(583, 227);
+            this.groupBox1.Location = new System.Drawing.Point(773, 255);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(128, 114);
+            this.groupBox1.Size = new System.Drawing.Size(123, 104);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выбор корабля";
@@ -92,7 +92,7 @@
             // 
             // TakeShip
             // 
-            this.TakeShip.Location = new System.Drawing.Point(6, 76);
+            this.TakeShip.Location = new System.Drawing.Point(4, 67);
             this.TakeShip.Name = "TakeShip";
             this.TakeShip.Size = new System.Drawing.Size(116, 32);
             this.TakeShip.TabIndex = 0;
@@ -102,7 +102,7 @@
             // 
             // buttonUp
             // 
-            this.buttonUp.Location = new System.Drawing.Point(583, 132);
+            this.buttonUp.Location = new System.Drawing.Point(773, 153);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(41, 24);
             this.buttonUp.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             // buttonDown
             // 
-            this.buttonDown.Location = new System.Drawing.Point(670, 132);
+            this.buttonDown.Location = new System.Drawing.Point(852, 153);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(41, 24);
             this.buttonDown.TabIndex = 6;
@@ -123,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(602, 12);
+            this.label2.Location = new System.Drawing.Point(789, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 7;
@@ -132,22 +132,22 @@
             // listBoxLevels
             // 
             this.listBoxLevels.FormattingEnabled = true;
-            this.listBoxLevels.Location = new System.Drawing.Point(583, 31);
+            this.listBoxLevels.Location = new System.Drawing.Point(773, 41);
             this.listBoxLevels.Name = "listBoxLevels";
-            this.listBoxLevels.Size = new System.Drawing.Size(128, 95);
+            this.listBoxLevels.Size = new System.Drawing.Size(120, 95);
             this.listBoxLevels.TabIndex = 8;
             // 
             // pictureBoxPrichal
             // 
             this.pictureBoxPrichal.Location = new System.Drawing.Point(10, 31);
             this.pictureBoxPrichal.Name = "pictureBoxPrichal";
-            this.pictureBoxPrichal.Size = new System.Drawing.Size(561, 310);
+            this.pictureBoxPrichal.Size = new System.Drawing.Size(757, 438);
             this.pictureBoxPrichal.TabIndex = 0;
             this.pictureBoxPrichal.TabStop = false;
             // 
             // pictureBoxShip
             // 
-            this.pictureBoxShip.Location = new System.Drawing.Point(717, 31);
+            this.pictureBoxShip.Location = new System.Drawing.Point(773, 374);
             this.pictureBoxShip.Name = "pictureBoxShip";
             this.pictureBoxShip.Size = new System.Drawing.Size(123, 95);
             this.pictureBoxShip.TabIndex = 9;
@@ -161,7 +161,7 @@
             this.loadToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(908, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,11 +178,6 @@
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "txt file | *.txt";
-            // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
@@ -190,11 +185,23 @@
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click_1);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.CheckFileExists = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.CheckPathExists = false;
+            this.saveFileDialog1.DereferenceLinks = false;
+            this.saveFileDialog1.ValidateNames = false;
+            // 
             // FormPrichal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 352);
+            this.ClientSize = new System.Drawing.Size(908, 481);
             this.Controls.Add(this.pictureBoxShip);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.label2);
