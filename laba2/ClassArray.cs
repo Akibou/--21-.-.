@@ -8,7 +8,6 @@ namespace laba2
 {
     class ClassArray<T> where T : ITransport
     {
-        
         private Dictionary<int, T> places;
         private int maxCount;
         private T defaultValue;

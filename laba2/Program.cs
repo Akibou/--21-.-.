@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace laba2
 {
+    public delegate void myDel(laba2.ITransport ship);
     static class Program
     {
         /// <summary>
@@ -16,8 +17,8 @@ namespace laba2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormSelect());
             Application.Run(new FormPrichal());
-            Application.Run(new Form1());
         }
     }
 }
