@@ -139,8 +139,6 @@ namespace laba2
         protected virtual void drawLiner(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-            //g.DrawEllipse(pen, startPosX + 70, startPosY + 30, 20, 20);
             //корпус
             PointF[] corpus = {
                 new PointF(startPosX + 10 , startPosY + 100),
@@ -172,8 +170,7 @@ namespace laba2
             g.DrawPolygon(pen, truba);
 
             Brush brRed = new SolidBrush(Color.Red);
-           // g.FillEllipse(brRed, startPosX, startPosY, 20, 20);
-           // g.FillEllipse(brRed, startPosX, startPosY + 30, 20, 20);
+        
             
         }
 }
