@@ -106,7 +106,7 @@ namespace laba2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            inter = new CruiseLiner(150, 4, 1000, color, BorderLine.Checked, TopLine.Checked, RoundLine.Checked, dopColor, Rest.Checked);
+            inter = new CruiseLiner(150, 4, 1000, color, BorderLine.Checked, TopLine.Checked, RoundLine.Checked, dopColor, Rest.Checked,Bass.Checked);
             Bitmap bmp = new Bitmap(LinerPic.Width, LinerPic.Height);
             Graphics gr = Graphics.FromImage(bmp);
             inter.drawShip(gr);
