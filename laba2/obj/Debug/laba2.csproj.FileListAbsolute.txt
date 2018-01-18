@@ -7,6 +7,7 @@ D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\bin\Debug\laba2.ex
 D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\bin\Debug\laba2.pdb
 D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.exe
 D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.pdb
-D:\Универ\Прог\копии\laba2\laba2\bin\Debug\laba2.exe.config
-D:\Универ\Прог\копии\laba2\laba2\obj\Debug\laba2.exe
-D:\Универ\Прог\копии\laba2\laba2\obj\Debug\laba2.pdb
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.FormPrichal.resources
+D:\Универ\Прог\копии\Лаба4\laba2\laba2\bin\Debug\laba2.exe.config
+D:\Универ\Прог\копии\Лаба4\laba2\laba2\obj\Debug\laba2.exe
+D:\Универ\Прог\копии\Лаба4\laba2\laba2\obj\Debug\laba2.pdb
