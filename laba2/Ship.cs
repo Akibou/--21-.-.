@@ -16,7 +16,7 @@ namespace laba2
             {
                 return 1;
             }
-            /*
+            
             if (MaxSpeed!=other.MaxSpeed)
             {
                 return MaxSpeed.CompareTo(other.MaxSpeed);
@@ -32,8 +32,8 @@ namespace laba2
             if (ColorBody != other.ColorBody)
             {
                 return ColorBody.Name.CompareTo(other.ColorBody.Name);
-            }*/
-            // return 0;
+            }
+            
             return other.ColorBody.Name.CompareTo(ColorBody.Name);
 
         }
