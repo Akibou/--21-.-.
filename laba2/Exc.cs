@@ -19,5 +19,8 @@ namespace laba2
     {
         public DataErrorException() : base("Не те данные") { }
     }
-
+    class PrichalAlreadyHaveException : Exception
+    {
+        public PrichalAlreadyHaveException() : base("Такой корабль уже есть") { }
+    }
 }

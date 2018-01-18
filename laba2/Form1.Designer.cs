@@ -36,7 +36,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.Weight = new System.Windows.Forms.Label();
             this.ColorBody = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SortButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.WaterLine = new System.Windows.Forms.TextBox();
@@ -126,15 +126,15 @@
             this.ColorBody.TabIndex = 10;
             this.ColorBody.Text = "Color:";
             // 
-            // button1
+            // SortButton
             // 
-            this.button1.Location = new System.Drawing.Point(568, 345);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 21);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Отправить лайнер";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SortButton.Location = new System.Drawing.Point(568, 345);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(121, 21);
+            this.SortButton.TabIndex = 11;
+            this.SortButton.Text = "Сортировать корабли";
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -273,7 +273,7 @@
             this.Controls.Add(this.WaterLine);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SortButton);
             this.Controls.Add(this.ColorBody);
             this.Controls.Add(this.Weight);
             this.Controls.Add(this.textBox3);
@@ -300,7 +300,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label Weight;
         private System.Windows.Forms.Label ColorBody;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SortButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox WaterLine;

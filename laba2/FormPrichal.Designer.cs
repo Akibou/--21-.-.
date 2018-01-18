@@ -45,6 +45,8 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.SortButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrichal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
@@ -53,7 +55,7 @@
             // 
             // SetShip
             // 
-            this.SetShip.Location = new System.Drawing.Point(773, 196);
+            this.SetShip.Location = new System.Drawing.Point(773, 172);
             this.SetShip.Name = "SetShip";
             this.SetShip.Size = new System.Drawing.Size(123, 33);
             this.SetShip.TabIndex = 2;
@@ -63,6 +65,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.maskedTextBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TakeShip);
@@ -102,7 +105,7 @@
             // 
             // buttonUp
             // 
-            this.buttonUp.Location = new System.Drawing.Point(773, 153);
+            this.buttonUp.Location = new System.Drawing.Point(773, 142);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(41, 24);
             this.buttonUp.TabIndex = 5;
@@ -112,7 +115,7 @@
             // 
             // buttonDown
             // 
-            this.buttonDown.Location = new System.Drawing.Point(852, 153);
+            this.buttonDown.Location = new System.Drawing.Point(852, 142);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(41, 24);
             this.buttonDown.TabIndex = 6;
@@ -197,11 +200,29 @@
             this.saveFileDialog1.DereferenceLinks = false;
             this.saveFileDialog1.ValidateNames = false;
             // 
+            // SortButton
+            // 
+            this.SortButton.Location = new System.Drawing.Point(773, 211);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(123, 32);
+            this.SortButton.TabIndex = 11;
+            this.SortButton.Text = "Сортировать";
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
+            // 
             // FormPrichal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 481);
+            this.Controls.Add(this.SortButton);
             this.Controls.Add(this.pictureBoxShip);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.label2);
@@ -243,5 +264,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
