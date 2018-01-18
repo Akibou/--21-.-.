@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace laba2
 {
     class ClassArray<T> : IEnumerator<T>, IEnumerable<T>,IComparable<ClassArray<T>>
-    {//where T : ITransport,
+    {
         private Dictionary<int, T> places;
         private int maxCount;
         private T defaultValue;
