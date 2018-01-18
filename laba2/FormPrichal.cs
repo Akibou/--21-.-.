@@ -13,6 +13,7 @@ namespace laba2
     public partial class FormPrichal : Form
     {
         Prichal prichal;
+        FormSelect form;
         
              public FormPrichal()
              {
@@ -38,15 +39,29 @@ namespace laba2
 
              private void SetShip_Click(object sender, EventArgs e)
              {
-                 ColorDialog dialog = new ColorDialog();
-                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                 {
-                     var ship = new Ship(100, 4, 1000, dialog.Color);
-                     int place = prichal.PutShipInPrichal(ship);
-                     Draw();
-                     MessageBox.Show("Ваше место: " + place);
-                 }
+            form = new FormSelect();
+            form.AddEvent(AddShip);
+            form.Show();
+        
              }
+        private void AddShip(ITransport ship)
+        {
+            if (ship != null)
+            {
+                int place = prichal.PutShipInPrichal(ship);
+                if (place > -1)
+                {
+                    Draw();
+                    MessageBox.Show("Ваше место: " + place);
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось причалить");
+                }
+            }
+          
+            }
+
 
              private void SetLiner_Click(object sender, EventArgs e)
              {
@@ -76,11 +91,11 @@ namespace laba2
                     ITransport ship = prichal.GetShipInPrichal(Convert.ToInt32(maskedTextBox1.Text));
                     if (ship != null)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
+                        Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         ship.setPosition(5, 5);
                         ship.drawShip(gr);
-                        pictureBoxTakeShip.Image = bmp;
+                        pictureBoxShip.Image = bmp;
                         Draw();
                     }
                     else { MessageBox.Show("На этом месте нет корабля"); }
