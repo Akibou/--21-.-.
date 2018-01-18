@@ -35,6 +35,22 @@ namespace laba2
 
 
         }
+    
+        public CruiseLiner(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                MaxCountPassengers = Convert.ToInt32(strs[1]);
+                Weight = Convert.ToInt32(strs[2]);
+                ColorBody = Color.FromName(strs[3]);
+                BorderLine = Convert.ToBoolean(strs[4]);
+                TopLine = Convert.ToBoolean(strs[5]);
+                RoundLine = Convert.ToBoolean(strs[6]);
+                dopColor = Color.FromName(strs[7]);
+            }
+        }
 
         protected override void drawLiner(Graphics g)
         {
@@ -82,5 +98,9 @@ namespace laba2
             dopColor = color;
         }
 
+        public override string GetInfo()
+        {
+            return MaxSpeed + ";" + MaxCountPassengers + ";" + Weight + ";" + ColorBody.Name+';'+BorderLine+';'+TopLine+';'+ RoundLine+';'+ dopColor.Name;
+        }
     }
 }
