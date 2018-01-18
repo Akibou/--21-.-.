@@ -12,7 +12,7 @@ namespace laba2
     {
         public int CompareTo(CruiseLiner other)
         {
-            /*
+           
             var res = (this is Ship).CompareTo(other is Ship);
             if (res != 0)
             {
@@ -34,8 +34,7 @@ namespace laba2
             {
                 dopColor.Name.CompareTo(other.dopColor.Name);
             }
-            */
-            // return 0;
+            
             return other.dopColor.Name.CompareTo(dopColor.Name);
         }
         public bool Equals (CruiseLiner other)
