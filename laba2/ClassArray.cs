@@ -66,6 +66,5 @@ namespace laba2
                 return defaultValue;
             }
         }
-       
     }
 }
