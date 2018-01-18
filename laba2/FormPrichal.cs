@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace laba2
     {
         Prichal prichal;
         FormSelect form;
+        private Logger log;
         
              public FormPrichal()
              {
                  InitializeComponent();
+            log = LogManager.GetCurrentClassLogger();
                  prichal = new Prichal(5);
             
             for (int i = 1; i < 6; i++)
@@ -42,25 +45,26 @@ namespace laba2
             form = new FormSelect();
             form.AddEvent(AddShip);
             form.Show();
-        
-             }
+            log.Info("Переход в formPrichal");
+
+        }
         private void AddShip(ITransport ship)
         {
             if (ship != null)
-            {
+            { try { 
                 int place = prichal.PutShipInPrichal(ship);
-                if (place > -1)
-                {
                     Draw();
-                    MessageBox.Show("Ваше место: " + place);
-                }
-                else
+                    log.Info("Ваше место: " + place);
+                } catch (PrichalOverflowException ex)
+
                 {
-                    MessageBox.Show("Не удалось причалить");
-                }
-            }
-          
-            }
+                    log.Info("Ошибка - Переполнение");
+                    MessageBox.Show(ex.Message,"Ошибка переполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } catch (Exception ex)
+                {
+                    log.Info("Ошибка - Общая ошибка");
+                    MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }}}
 
 
              private void SetLiner_Click(object sender, EventArgs e)
@@ -75,7 +79,7 @@ namespace laba2
 
                          int place = prichal.PutShipInPrichal(car);
                          Draw();
-                         MessageBox.Show("Ваше место: " + place);
+                    log.Info("Ваше место: " + place);
                      }
                  }
 
@@ -84,21 +88,29 @@ namespace laba2
         private void TakeShip_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
-            {
+            { 
                 string level = listBoxLevels.Items[listBoxLevels.SelectedIndex].ToString();
                 if (maskedTextBox1.Text != "")
-                {
-                    ITransport ship = prichal.GetShipInPrichal(Convert.ToInt32(maskedTextBox1.Text));
-                    if (ship != null)
+                {try
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        ship.setPosition(5, 5);
-                        ship.drawShip(gr);
-                        pictureBoxShip.Image = bmp;
-                        Draw();
+                        ITransport ship = prichal.GetShipInPrichal(Convert.ToInt32(maskedTextBox1.Text));
+                        
+                            Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
+                            Graphics gr = Graphics.FromImage(bmp);
+                            ship.setPosition(5, 5);
+                            ship.drawShip(gr);
+                            pictureBoxShip.Image = bmp;
+                            Draw();
+                        
+                    } catch (PrichalIndexOutOfRangeException ex) {
+                        log.Info("Ошибка - Неверный номер");
+                        MessageBox.Show(ex.Message, "Неверный номер", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                    } catch (Exception ex)
+                    {
+                        log.Info("Ошибка - Общая ошибка");
+                        MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else { MessageBox.Show("На этом месте нет корабля"); }
                 }
             }
         }
@@ -107,6 +119,7 @@ namespace laba2
         {
             prichal.LevelDown();
             listBoxLevels.SelectedIndex = prichal.getCurrentLevel;
+            log.Info("Переход на уровень ниже, Текущий уровень: " + prichal.getCurrentLevel);
             Draw();
         }
 
@@ -114,6 +127,7 @@ namespace laba2
         {
             prichal.LevelUp();
             listBoxLevels.SelectedIndex = prichal.getCurrentLevel;
+            log.Info("Переход на уровень выше, Текущий уровень: " + prichal.getCurrentLevel);
             Draw();
         }
 
@@ -121,15 +135,17 @@ namespace laba2
         {
             if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (prichal.SaveData(saveFileDialog1.FileName))
+                try
                 {
+                    prichal.SaveData(saveFileDialog1.FileName);
+                    log.Info("Сохранение прошло успешно");
                     MessageBox.Show("Сохранение прошло успешно", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.Info("Ошибка при сохранении");
+                    MessageBox.Show("Ошибка сохранения: " + ex.Message);
                 }
             }
 
@@ -139,17 +155,16 @@ namespace laba2
 
         private void loadToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+        if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (prichal.LoadData(openFileDialog1.FileName))
-                {
-                    MessageBox.Show("Загрузили", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Не загрузили", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try {
+                    prichal.LoadData(openFileDialog1.FileName);
+                    log.Info("Загрузили файл");
+                    MessageBox.Show("Загрузили", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     }
+                catch(Exception ex) {
+                    log.Info(ex.Message + "Не загрузили файл");
+                    MessageBox.Show("Загрузка не удалась: " + ex.Message);
                 }
                 Draw();
             }
