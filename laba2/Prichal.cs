@@ -60,18 +60,20 @@ namespace laba2
         {
 
             DrawMarking(g);
-
-            for (int i = 0; i < countPlaces; i++)
+            int i =0;
+            foreach (var ship in prichalStages[currentLevel])
             {
-
-                var ship = prichalStages[currentLevel][i];
-                if (ship != null)
-                {
-
+                
                     ship.setPosition(5 + i / 5 * placeSizeWidth + 5, i % 5 * placeSizeHeight - 15);
                     ship.drawShip(g);
-                }
+                i++;
             }
+        }
+        public string[] SortMe()
+        {
+            string[] test = { "1", "2" };
+            prichalStages.Sort();
+            return test;
         }
 
         private void DrawMarking(Graphics g)

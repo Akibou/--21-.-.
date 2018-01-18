@@ -8,8 +8,57 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    public class Ship : WaterTrans//переделать на шип
+    public class Ship : WaterTrans, IComparable<Ship>, IEquatable<Ship>
     {
+        public int CompareTo (Ship other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            /*
+            if (MaxSpeed!=other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (MaxCountPassengers != other.MaxCountPassengers)
+            {
+                return MaxCountPassengers.CompareTo(other.MaxCountPassengers);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (ColorBody != other.ColorBody)
+            {
+                return ColorBody.Name.CompareTo(other.ColorBody.Name);
+            }*/
+            // return 0;
+            return other.ColorBody.Name.CompareTo(ColorBody.Name);
+
+        }
+
+        public bool Equals (Ship other)
+        {
+            if (other == null) { return false; }
+            if (MaxCountPassengers != other.MaxCountPassengers) {  return false;  }
+            if (MaxSpeed!=other.MaxSpeed) { return false; }
+            if (Weight!=other.Weight) { return false; }
+            if (ColorBody!=other.ColorBody) { return false; }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj==null) { return false; }
+            Ship shipObj = obj as Ship;
+            if (shipObj==null) { return false; }
+            else { return Equals(shipObj); }
+        }
+
+        public override int GetHashCode()
+        {
+            return MaxSpeed.GetHashCode();
+        }
         public override int MaxSpeed
         {
             get

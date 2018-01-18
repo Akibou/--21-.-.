@@ -17,9 +17,9 @@ namespace laba2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSelect());
+            //Application.Run(new FormSelect());  
+            Application.Run(new Form1());
             Application.Run(new FormPrichal());
-            //Application.Run(new Form1());
         }
     }
 }
