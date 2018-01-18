@@ -1,0 +1,12 @@
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\bin\Debug\laba2.exe.config
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.csprojResolveAssemblyReference.cache
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.Properties.Resources.resources
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.csproj.GenerateResource.Cache
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.Form1.resources
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\bin\Debug\laba2.exe
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\bin\Debug\laba2.pdb
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.exe
+D:\Универ\Прог\Git\PIbd-21-TolkachevaNS\laba2\laba2\obj\Debug\laba2.pdb
+D:\Универ\Прог\копии\laba2\laba2\bin\Debug\laba2.exe.config
+D:\Универ\Прог\копии\laba2\laba2\obj\Debug\laba2.exe
+D:\Универ\Прог\копии\laba2\laba2\obj\Debug\laba2.pdb
